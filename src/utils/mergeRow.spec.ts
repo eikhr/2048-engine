@@ -22,7 +22,12 @@ describe('mergeRow', () => {
     const [newRow, score] = mergeRow(row);
 
     expect(row).toEqual([null, null, tile1, tile2]);
-    expect(newRow).toEqual([{ id: 1, value: 4 }, null, null, null]);
+    expect(newRow).toEqual([
+      { id: 1, mergedId: 2, value: 4 },
+      null,
+      null,
+      null,
+    ]);
     expect(score).toEqual(4);
   });
 
@@ -36,7 +41,12 @@ describe('mergeRow', () => {
     const [newRow, score] = mergeRow(row);
 
     expect(row).toEqual([null, tile1, tile2, tile3]);
-    expect(newRow).toEqual([{ id: 1, value: 4 }, tile3, null, null]);
+    expect(newRow).toEqual([
+      { id: 1, mergedId: 2, value: 4 },
+      tile3,
+      null,
+      null,
+    ]);
     expect(score).toEqual(4);
   });
 
@@ -52,8 +62,8 @@ describe('mergeRow', () => {
 
     expect(row).toEqual([tile1, tile2, tile3, tile4]);
     expect(newRow).toEqual([
-      { id: 1, value: 4 },
-      { id: 3, value: 32 },
+      { id: 1, mergedId: 2, value: 4 },
+      { id: 3, mergedId: 4, value: 32 },
       null,
       null,
     ]);
@@ -72,8 +82,8 @@ describe('mergeRow', () => {
 
     expect(row).toEqual([tile1, tile2, tile3, tile4]);
     expect(newRow).toEqual([
-      { id: 1, value: 4 },
-      { id: 3, value: 4 },
+      { id: 1, mergedId: 2, value: 4 },
+      { id: 3, mergedId: 4, value: 4 },
       null,
       null,
     ]);
@@ -92,7 +102,7 @@ describe('mergeRow', () => {
     expect(row).toEqual([tile1, tile2, tile3, null]);
     expect(newRow).toEqual([
       { id: 1, value: 4 },
-      { id: 2, value: 4 },
+      { id: 2, mergedId: 3, value: 4 },
       null,
       null,
     ]);

@@ -105,7 +105,7 @@ describe('mergeBoard', () => {
     const [newBoard, score] = mergeBoard(board, Direction.LEFT);
 
     expect(newBoard).toEqual([
-      [{ id: 1, value: 4 }, null, null, null],
+      [{ id: 1, mergedId: 2, value: 4 }, null, null, null],
       [null, null, null, null],
       [null, null, null, null],
       [null, null, null, null],
@@ -130,7 +130,7 @@ describe('mergeBoard', () => {
       [null, null, null, null],
       [null, null, null, null],
       [null, null, null, null],
-      [{ id: 2, value: 4 }, null, null, null],
+      [{ id: 2, mergedId: 1, value: 4 }, null, null, null],
     ]);
     expect(score).toEqual(4);
   });
@@ -149,7 +149,7 @@ describe('mergeBoard', () => {
     const [newBoard, score] = mergeBoard(board, Direction.UP);
 
     expect(newBoard).toEqual([
-      [{ id: 1, value: 4 }, null, null, null],
+      [{ id: 1, mergedId: 2, value: 4 }, null, null, null],
       [null, null, null, null],
       [null, null, null, null],
       [null, null, null, null],
@@ -186,9 +186,9 @@ describe('mergeBoard', () => {
       [null, null, null, null],
       [tile4_3, tile2_1, null, tile2_4],
       [
-        { id: 402, value: 8 },
-        { id: 802, value: 16 },
-        { id: 202, value: 4 },
+        { id: 402, mergedId: 401, value: 8 },
+        { id: 802, mergedId: 801, value: 16 },
+        { id: 202, mergedId: 203, value: 4 },
         tile4_4,
       ],
       [tile16, tile32, tile8_3, tile8_4],
