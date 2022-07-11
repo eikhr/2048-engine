@@ -10,7 +10,7 @@ describe('createRandomTile', () => {
       [0, 0],
     ]),
     score: 0,
-    tileCount: 0,
+    totalTileCount: 0,
   };
 
   it('returns a valid tile', () => {

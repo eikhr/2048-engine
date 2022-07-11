@@ -18,8 +18,10 @@ export type Board = readonly TileRow[];
 export interface GameState {
   readonly board: Board;
   readonly score: number;
-  readonly rngNumber?: number; // initial random-seed plus a deterministic amount based on rng usage
-  readonly tileCount?: number; // total number of tiles generated
+  // current random-seed (incremented for each rng-creation)
+  readonly rngNumber?: number;
+  // total number of tiles generated in the game
+  readonly totalTileCount?: number;
 }
 
 type DeepWritable<T> = { -readonly [P in keyof T]: DeepWritable<T[P]> };
@@ -45,8 +47,11 @@ export interface BonusMove {
 export type Move = StandardMove | BonusMove;
 
 export interface GameData {
-  readonly currentState: GameState;
   readonly initialBoard: Board;
   readonly randomSeed: number;
-  readonly moveLog: Move;
+  readonly moveLog: Move[];
+}
+
+export interface Game extends GameData {
+  readonly currentState: GameState;
 }
