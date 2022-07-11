@@ -47,11 +47,11 @@ export interface BonusMove {
 export type Move = StandardMove | BonusMove;
 
 export interface GameData {
-  readonly initialBoard: Board;
   readonly randomSeed: number;
   readonly moveLog: Move[];
 }
 
 export interface Game extends GameData {
-  readonly currentState: GameState;
+  currentState: GameState;
+  move: (direction: Direction) => GameState;
 }
