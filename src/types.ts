@@ -18,6 +18,8 @@ export interface GameState {
   score: number;
 }
 
+export type GameStateModifier = (state: GameState) => GameState;
+
 export interface GameData {
   currentState: GameState;
   initialBoard: Board;
