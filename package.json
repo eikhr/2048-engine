@@ -1,0 +1,25 @@
+{
+  "name": "2048-engine",
+  "version": "0.0.0",
+  "description": "Game engine for 2048 game",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "prettier": "prettier --write 'src/**/*.ts'",
+    "test": "jest",
+    "build": "tsc -p tsconfig.json"
+  },
+  "devDependencies": {
+    "@types/jest": "^28.1.4",
+    "jest": "^28.1.2",
+    "prettier": "^2.7.1",
+    "ts-jest": "^28.0.5",
+    "ts-node": "^10.8.2",
+    "typescript": "^4.7.4"
+  },
+  "prettier": {
+    "singleQuote": true
+  },
+  "author": "Eik Hvattum Røgeberg",
+  "license": "ISC"
+}
