@@ -1,3 +1,5 @@
+import { RandomSeed } from 'random-seed';
+
 export enum Direction {
   UP,
   DOWN,
@@ -14,14 +16,37 @@ export type TileRow = readonly (Tile | null)[];
 export type Board = readonly TileRow[];
 
 export interface GameState {
-  board: Board;
-  score: number;
+  readonly board: Board;
+  readonly score: number;
+  readonly rngNumber?: number; // initial random-seed plus a deterministic amount based on rng usage
+  readonly tileCount?: number; // total number of tiles generated
 }
+
+type DeepWritable<T> = { -readonly [P in keyof T]: DeepWritable<T[P]> };
+
+export type MutableGameState = DeepWritable<GameState>;
 
 export type GameStateModifier = (state: GameState) => GameState;
 
+export enum MoveType {
+  STANDARD,
+  BONUS,
+}
+
+export interface StandardMove {
+  readonly type: MoveType.STANDARD;
+  readonly direction: Direction;
+}
+
+export interface BonusMove {
+  readonly type: MoveType.BONUS;
+}
+
+export type Move = StandardMove | BonusMove;
+
 export interface GameData {
-  currentState: GameState;
-  initialBoard: Board;
-  moveLog: Direction[];
+  readonly currentState: GameState;
+  readonly initialBoard: Board;
+  readonly randomSeed: number;
+  readonly moveLog: Move;
 }

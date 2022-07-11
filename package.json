@@ -9,8 +9,12 @@
     "test": "jest",
     "build": "tsc -p tsconfig.json"
   },
+  "dependencies": {
+    "random-seed": "^0.3.0"
+  },
   "devDependencies": {
     "@types/jest": "^28.1.4",
+    "@types/random-seed": "^0.3.3",
     "jest": "^28.1.2",
     "prettier": "^2.7.1",
     "ts-jest": "^28.0.5",
