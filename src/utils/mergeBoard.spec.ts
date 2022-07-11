@@ -5,10 +5,10 @@ import mergeBoard, {
 import { Direction } from '../types';
 
 describe('normalizeBoard', () => {
-  const tile1 = { id: '1', value: 2 };
-  const tile2 = { id: '2', value: 2 };
-  const tile3 = { id: '3', value: 16 };
-  const tile4 = { id: '4', value: 16 };
+  const tile1 = { id: 1, value: 2 };
+  const tile2 = { id: 2, value: 2 };
+  const tile3 = { id: 3, value: 16 };
+  const tile4 = { id: 4, value: 16 };
 
   const testBoard = [
     [tile1, tile2, null, null],
@@ -92,8 +92,8 @@ describe('normalizeBoard', () => {
 
 describe('mergeBoard', () => {
   it('should merge two tiles to the left', () => {
-    const tile1 = { id: '1', value: 2 };
-    const tile2 = { id: '2', value: 2 };
+    const tile1 = { id: 1, value: 2 };
+    const tile2 = { id: 2, value: 2 };
 
     const board = [
       [tile1, tile2, null, null],
@@ -105,7 +105,7 @@ describe('mergeBoard', () => {
     const [newBoard, score] = mergeBoard(board, Direction.LEFT);
 
     expect(newBoard).toEqual([
-      [{ id: '1', value: 4 }, null, null, null],
+      [{ id: 1, value: 4 }, null, null, null],
       [null, null, null, null],
       [null, null, null, null],
       [null, null, null, null],
@@ -114,8 +114,8 @@ describe('mergeBoard', () => {
   });
 
   it('should merge two tiles down', () => {
-    const tile1 = { id: '1', value: 2 };
-    const tile2 = { id: '2', value: 2 };
+    const tile1 = { id: 1, value: 2 };
+    const tile2 = { id: 2, value: 2 };
 
     const board = [
       [tile1, null, null, null],
@@ -130,14 +130,14 @@ describe('mergeBoard', () => {
       [null, null, null, null],
       [null, null, null, null],
       [null, null, null, null],
-      [{ id: '2', value: 4 }, null, null, null],
+      [{ id: 2, value: 4 }, null, null, null],
     ]);
     expect(score).toEqual(4);
   });
 
   it('should merge two tiles up', () => {
-    const tile1 = { id: '1', value: 2 };
-    const tile2 = { id: '2', value: 2 };
+    const tile1 = { id: 1, value: 2 };
+    const tile2 = { id: 2, value: 2 };
 
     const board = [
       [tile1, null, null, null],
@@ -149,7 +149,7 @@ describe('mergeBoard', () => {
     const [newBoard, score] = mergeBoard(board, Direction.UP);
 
     expect(newBoard).toEqual([
-      [{ id: '1', value: 4 }, null, null, null],
+      [{ id: 1, value: 4 }, null, null, null],
       [null, null, null, null],
       [null, null, null, null],
       [null, null, null, null],
@@ -158,20 +158,20 @@ describe('mergeBoard', () => {
   });
 
   it('should merge crowded board correctly', () => {
-    const tile2_1 = { id: '2_1', value: 2 };
-    const tile2_2 = { id: '2_2', value: 2 };
-    const tile2_3 = { id: '2_3', value: 2 };
-    const tile2_4 = { id: '2_4', value: 2 };
-    const tile4_1 = { id: '4_1', value: 4 };
-    const tile4_2 = { id: '4_2', value: 4 };
-    const tile4_3 = { id: '4_3', value: 4 };
-    const tile4_4 = { id: '4_4', value: 4 };
-    const tile8_1 = { id: '8_1', value: 8 };
-    const tile8_2 = { id: '8_2', value: 8 };
-    const tile8_3 = { id: '8_3', value: 8 };
-    const tile8_4 = { id: '8_4', value: 8 };
-    const tile16 = { id: '16', value: 16 };
-    const tile32 = { id: '32', value: 32 };
+    const tile2_1 = { id: 201, value: 2 };
+    const tile2_2 = { id: 202, value: 2 };
+    const tile2_3 = { id: 203, value: 2 };
+    const tile2_4 = { id: 204, value: 2 };
+    const tile4_1 = { id: 401, value: 4 };
+    const tile4_2 = { id: 402, value: 4 };
+    const tile4_3 = { id: 403, value: 4 };
+    const tile4_4 = { id: 404, value: 4 };
+    const tile8_1 = { id: 801, value: 8 };
+    const tile8_2 = { id: 802, value: 8 };
+    const tile8_3 = { id: 803, value: 8 };
+    const tile8_4 = { id: 804, value: 8 };
+    const tile16 = { id: 16, value: 16 };
+    const tile32 = { id: 32, value: 32 };
 
     const board = [
       [tile4_3, tile2_1, tile2_3, tile2_4],
@@ -186,9 +186,9 @@ describe('mergeBoard', () => {
       [null, null, null, null],
       [tile4_3, tile2_1, null, tile2_4],
       [
-        { id: '4_2', value: 8 },
-        { id: '8_2', value: 16 },
-        { id: '2_2', value: 4 },
+        { id: 402, value: 8 },
+        { id: 802, value: 16 },
+        { id: 202, value: 4 },
         tile4_4,
       ],
       [tile16, tile32, tile8_3, tile8_4],

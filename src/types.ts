@@ -9,7 +9,7 @@ export enum Direction {
 
 export interface Tile {
   readonly value: number;
-  readonly id: string | number;
+  readonly id: number;
 }
 
 export type TileRow = readonly (Tile | null)[];

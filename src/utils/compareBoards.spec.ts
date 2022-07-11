@@ -43,11 +43,11 @@ describe('compareBoards', () => {
 
   it('should return false if a tile has different id', () => {
     const board1 = [
-      [{ value: 2, id: '1' }, null],
+      [{ value: 2, id: 1 }, null],
       [null, null],
     ];
     const board2 = [
-      [{ value: 2, id: '2' }, null],
+      [{ value: 2, id: 2 }, null],
       [null, null],
     ];
 
