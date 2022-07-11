@@ -28,12 +28,18 @@ const createGame = (gameData: Partial<GameData> = {}): Game => {
     return dispatchMove(this, { type: MoveType.STANDARD, direction });
   }
 
-  return {
+  const game: Game = {
     currentState: gameState,
     randomSeed,
-    moveLog,
+    moveLog: [],
     move,
   };
+
+  for (const move of moveLog) {
+    dispatchMove(game, move);
+  }
+
+  return game;
 };
 
 export default createGame;

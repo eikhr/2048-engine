@@ -1,5 +1,6 @@
 import createGame from './createGame';
-import { Direction, MoveType } from './types';
+import { Direction, GameData, MoveType } from './types';
+import { toNumberMatrix } from './utils/numberMatrix';
 
 describe('createGame', () => {
   it('initializes game with expected values', () => {
@@ -25,4 +26,399 @@ describe('createGame', () => {
       { type: MoveType.STANDARD, direction: Direction.UP },
     ]);
   });
+
+  it('creating a game with supplied game data (incl. move log) results in correct state', () => {
+    const game = createGame(testGameData);
+
+    expect(game.currentState.score).toEqual(1216);
+    expect(game.currentState.totalTileCount).toEqual(94);
+
+    expect(toNumberMatrix(game.currentState.board)).toEqual(
+      testGameNumberMatrix
+    );
+
+    expect(game.randomSeed).toEqual(testGameData.randomSeed);
+    expect(game.moveLog).toEqual(testGameData.moveLog);
+  });
 });
+
+export const testGameNumberMatrix = [
+  [4, 32, 0, 4],
+  [2, 128, 0, 0],
+  [4, 16, 32, 16],
+  [8, 2, 64, 4],
+];
+
+const testGameData: GameData = {
+  randomSeed: 537805,
+  moveLog: [
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.LEFT,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.LEFT,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.LEFT,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.LEFT,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.LEFT,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.UP,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.LEFT,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.UP,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.LEFT,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.UP,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.LEFT,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.UP,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.LEFT,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.UP,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.UP,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.LEFT,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.UP,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.LEFT,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.RIGHT,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.LEFT,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.LEFT,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.LEFT,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.LEFT,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.UP,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.UP,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.UP,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.LEFT,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.UP,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.LEFT,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.UP,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.LEFT,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.LEFT,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.UP,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.RIGHT,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.LEFT,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.RIGHT,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.LEFT,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.RIGHT,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.LEFT,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.RIGHT,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.LEFT,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.RIGHT,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.UP,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.LEFT,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.DOWN,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.RIGHT,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.LEFT,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.UP,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.RIGHT,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.DOWN,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.LEFT,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.UP,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.RIGHT,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.DOWN,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.LEFT,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.DOWN,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.RIGHT,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.UP,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.LEFT,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.DOWN,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.UP,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.LEFT,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.RIGHT,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.UP,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.DOWN,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.LEFT,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.RIGHT,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.LEFT,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.RIGHT,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.LEFT,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.RIGHT,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.DOWN,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.UP,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.LEFT,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.UP,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.RIGHT,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.LEFT,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.DOWN,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.RIGHT,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.UP,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.RIGHT,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.DOWN,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.LEFT,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.LEFT,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.UP,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.RIGHT,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.DOWN,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.LEFT,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.UP,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.RIGHT,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.DOWN,
+    },
+    {
+      type: MoveType.STANDARD,
+      direction: Direction.LEFT,
+    },
+  ],
+};
