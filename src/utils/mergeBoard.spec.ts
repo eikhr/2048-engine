@@ -113,21 +113,43 @@ describe('mergeBoard', () => {
     expect(score).toEqual(4);
   });
 
-  it('should merge two tiles to the right', () => {
+  it('should merge two tiles down', () => {
     const tile1 = { id: '1', value: 2 };
     const tile2 = { id: '2', value: 2 };
 
     const board = [
-      [tile1, tile2, null, null],
-      [null, null, null, null],
+      [tile1, null, null, null],
+      [tile2, null, null, null],
       [null, null, null, null],
       [null, null, null, null],
     ];
 
-    const [newBoard, score] = mergeBoard(board, Direction.RIGHT);
+    const [newBoard, score] = mergeBoard(board, Direction.DOWN);
 
     expect(newBoard).toEqual([
-      [null, null, null, { id: '2', value: 4 }],
+      [null, null, null, null],
+      [null, null, null, null],
+      [null, null, null, null],
+      [{ id: '2', value: 4 }, null, null, null],
+    ]);
+    expect(score).toEqual(4);
+  });
+
+  it('should merge two tiles up', () => {
+    const tile1 = { id: '1', value: 2 };
+    const tile2 = { id: '2', value: 2 };
+
+    const board = [
+      [tile1, null, null, null],
+      [tile2, null, null, null],
+      [null, null, null, null],
+      [null, null, null, null],
+    ];
+
+    const [newBoard, score] = mergeBoard(board, Direction.UP);
+
+    expect(newBoard).toEqual([
+      [{ id: '1', value: 4 }, null, null, null],
       [null, null, null, null],
       [null, null, null, null],
       [null, null, null, null],
@@ -135,25 +157,41 @@ describe('mergeBoard', () => {
     expect(score).toEqual(4);
   });
 
-  it('should merge two tiles to the right', () => {
-    const tile1 = { id: '1', value: 2 };
-    const tile2 = { id: '2', value: 2 };
+  it('should merge crowded board correctly', () => {
+    const tile2_1 = { id: '2_1', value: 2 };
+    const tile2_2 = { id: '2_2', value: 2 };
+    const tile2_3 = { id: '2_3', value: 2 };
+    const tile2_4 = { id: '2_4', value: 2 };
+    const tile4_1 = { id: '4_1', value: 4 };
+    const tile4_2 = { id: '4_2', value: 4 };
+    const tile4_3 = { id: '4_3', value: 4 };
+    const tile4_4 = { id: '4_4', value: 4 };
+    const tile8_1 = { id: '8_1', value: 8 };
+    const tile8_2 = { id: '8_2', value: 8 };
+    const tile8_3 = { id: '8_3', value: 8 };
+    const tile8_4 = { id: '8_4', value: 8 };
+    const tile16 = { id: '16', value: 16 };
+    const tile32 = { id: '32', value: 32 };
 
     const board = [
-      [tile1, tile2, null, null],
-      [null, null, null, null],
-      [null, null, null, null],
-      [null, null, null, null],
+      [tile4_3, tile2_1, tile2_3, tile2_4],
+      [tile4_1, tile8_1, tile2_2, tile4_4],
+      [tile4_2, tile8_2, tile8_3, tile8_4],
+      [tile16, tile32, null, null],
     ];
 
-    const [newBoard, score] = mergeBoard(board, Direction.RIGHT);
+    const [newBoard, score] = mergeBoard(board, Direction.DOWN);
 
     expect(newBoard).toEqual([
-      [null, null, null, { id: '2', value: 4 }],
       [null, null, null, null],
-      [null, null, null, null],
-      [null, null, null, null],
+      [tile4_3, tile2_1, null, tile2_4],
+      [
+        { id: '4_2', value: 8 },
+        { id: '8_2', value: 16 },
+        { id: '2_2', value: 4 },
+        tile4_4,
+      ],
+      [tile16, tile32, tile8_3, tile8_4],
     ]);
-    expect(score).toEqual(4);
   });
 });
