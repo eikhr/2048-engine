@@ -6,7 +6,9 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "prettier": "prettier --write 'src/**/*.ts'",
-    "lint": "eslint src/**/*.ts",
+    "lint": "yarn lint:prettier && yarn lint:eslint",
+    "lint:prettier": "prettier --check 'src/**/*.ts'",
+    "lint:eslint": "eslint src/**/*.ts",
     "test": "jest",
     "build": "tsc -p tsconfig.json"
   },
