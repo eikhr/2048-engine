@@ -4,7 +4,7 @@ import deepCopyGameState from './deepCopyGameState';
 import createRandomTile from './createRandomTile';
 
 describe('createRandomTile', () => {
-  let gameState: GameState = {
+  const gameState: GameState = {
     board: fromNumberMatrix([
       [2, 0],
       [0, 0],

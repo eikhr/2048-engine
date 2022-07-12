@@ -1,4 +1,4 @@
-import { GameStateModifier, Tile } from '../types';
+import { GameStateModifier } from '../types';
 import getEmptyTileCoords from '../utils/getEmptyTileCoords';
 import getRng from '../utils/getRng';
 import createRandomTile from '../utils/createRandomTile';

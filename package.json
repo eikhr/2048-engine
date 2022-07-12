@@ -6,6 +6,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "prettier": "prettier --write 'src/**/*.ts'",
+    "lint": "eslint src/**/*.ts",
     "test": "jest",
     "build": "tsc -p tsconfig.json"
   },
@@ -15,6 +16,9 @@
   "devDependencies": {
     "@types/jest": "^28.1.4",
     "@types/random-seed": "^0.3.3",
+    "@typescript-eslint/eslint-plugin": "^5.30.6",
+    "@typescript-eslint/parser": "^5.30.6",
+    "eslint": "^8.19.0",
     "jest": "^28.1.2",
     "prettier": "^2.7.1",
     "ts-jest": "^28.0.5",

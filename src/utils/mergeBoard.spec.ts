@@ -180,7 +180,7 @@ describe('mergeBoard', () => {
       [tile16, tile32, null, null],
     ];
 
-    const [newBoard, score] = mergeBoard(board, Direction.DOWN);
+    const [newBoard] = mergeBoard(board, Direction.DOWN);
 
     expect(newBoard).toEqual([
       [null, null, null, null],

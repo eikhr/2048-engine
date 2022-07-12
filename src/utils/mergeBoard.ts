@@ -9,7 +9,7 @@ export const normalizeBoard = (board: Board, direction: Direction): Board => {
   const numRows = board.length;
   const numCols = board[0].length;
 
-  const normalizedBoard: (Tile | null)[][] = [...Array(numRows)].map((e) =>
+  const normalizedBoard: (Tile | null)[][] = [...Array(numRows)].map(() =>
     Array(numCols).fill(null)
   );
 

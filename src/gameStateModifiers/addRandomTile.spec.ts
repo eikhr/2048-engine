@@ -1,4 +1,4 @@
-import { fromNumberMatrix, toNumberMatrix } from '../utils/numberMatrix';
+import { fromNumberMatrix } from '../utils/numberMatrix';
 import { GameState } from '../types';
 import addRandomTile from './addRandomTile';
 
