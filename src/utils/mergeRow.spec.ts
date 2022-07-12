@@ -70,6 +70,25 @@ describe('mergeRow', () => {
     expect(score).toEqual(36);
   });
 
+  it('should not merge tile into newly created (merged) tile', () => {
+    const tile1 = { id: 1, value: 8 };
+    const tile2 = { id: 2, value: 8 };
+    const tile3 = { id: 3, value: 16 };
+
+    const row = [tile1, tile2, tile3, null];
+
+    const [newRow, score] = mergeRow(row);
+
+    expect(row).toEqual([tile1, tile2, tile3, null]);
+    expect(newRow).toEqual([
+      { id: 1, mergedId: 2, value: 16 },
+      { id: 3, value: 16 },
+      null,
+      null,
+    ]);
+    expect(score).toEqual(16);
+  });
+
   it('should merge four equal tiles', () => {
     const tile1 = { id: 1, value: 2 };
     const tile2 = { id: 2, value: 2 };

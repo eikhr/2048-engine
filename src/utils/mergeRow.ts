@@ -18,6 +18,7 @@ const mergeRow = (row: TileRow): [TileRow, number] => {
           value: tile.value * 2,
           mergedId: tile.id,
         };
+        mergeableTileIndex = null;
         nulls.push(null);
         score += tile.value * 2;
       } else {

@@ -30,8 +30,9 @@ describe('createGame', () => {
   it('creating a game with supplied game data (incl. move log) results in correct state', () => {
     const game = createGame(testGameData);
 
-    expect(game.currentState.score).toEqual(1216);
-    expect(game.currentState.totalTileCount).toEqual(94);
+    expect(game.currentState.score).toEqual(1660);
+
+    expect(game.currentState.totalTileCount).toEqual(92);
 
     expect(toNumberMatrix(game.currentState.board)).toEqual(
       testGameNumberMatrix
@@ -43,10 +44,10 @@ describe('createGame', () => {
 });
 
 export const testGameNumberMatrix = [
-  [4, 32, 0, 4],
-  [2, 128, 0, 0],
-  [4, 16, 32, 16],
-  [8, 2, 64, 4],
+  [4, 0, 4, 0],
+  [4, 0, 0, 0],
+  [16, 256, 0, 0],
+  [4, 16, 4, 0],
 ];
 
 const testGameData: GameData = {
@@ -274,10 +275,6 @@ const testGameData: GameData = {
     },
     {
       type: MoveType.STANDARD,
-      direction: Direction.DOWN,
-    },
-    {
-      type: MoveType.STANDARD,
       direction: Direction.RIGHT,
     },
     {
@@ -335,10 +332,6 @@ const testGameData: GameData = {
     {
       type: MoveType.STANDARD,
       direction: Direction.RIGHT,
-    },
-    {
-      type: MoveType.STANDARD,
-      direction: Direction.DOWN,
     },
     {
       type: MoveType.STANDARD,
