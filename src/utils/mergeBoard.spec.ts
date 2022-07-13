@@ -2,7 +2,8 @@ import mergeBoard, {
   normalizeBoard,
   reverseNormalizeBoard,
 } from './mergeBoard';
-import { Direction } from '../types';
+import { Board, Direction } from '../types';
+import { fromNumberMatrix, toNumberMatrix } from './numberMatrix';
 
 describe('normalizeBoard', () => {
   const tile1 = { id: 1, value: 2 };
@@ -16,6 +17,11 @@ describe('normalizeBoard', () => {
     [null, tile3, null, null],
     [null, null, null, tile4],
   ];
+
+  const rectangleTestBoard = fromNumberMatrix([
+    [0, 0, 2, 2, 0],
+    [4, 0, 0, 0, 0],
+  ]);
 
   it('should not change the board if direction is left', () => {
     const normalizedBoard = normalizeBoard(testBoard, Direction.LEFT);
@@ -87,6 +93,54 @@ describe('normalizeBoard', () => {
       Direction.DOWN
     );
     expect(originalBoard).toEqual(testBoard);
+  });
+
+  const testNormalizeBoard = (
+    board: Board,
+    direction: Direction,
+    expectedNormalizedMatrix: number[][]
+  ) => {
+    const normalizedBoard = normalizeBoard(board, direction);
+    expect(toNumberMatrix(normalizedBoard)).toEqual(expectedNormalizedMatrix);
+    const reverseNormalizedBoard = reverseNormalizeBoard(
+      normalizedBoard,
+      direction
+    );
+    expect(reverseNormalizedBoard).toEqual(board);
+  };
+
+  it('should normalize non-square board UP', () => {
+    testNormalizeBoard(rectangleTestBoard, Direction.UP, [
+      [0, 0],
+      [2, 0],
+      [2, 0],
+      [0, 0],
+      [0, 4],
+    ]);
+  });
+
+  it('should normalize non-square board DOWN', () => {
+    testNormalizeBoard(rectangleTestBoard, Direction.DOWN, [
+      [4, 0],
+      [0, 0],
+      [0, 2],
+      [0, 2],
+      [0, 0],
+    ]);
+  });
+
+  it('should normalize non-square board LEFT', () => {
+    testNormalizeBoard(rectangleTestBoard, Direction.LEFT, [
+      [0, 0, 2, 2, 0],
+      [4, 0, 0, 0, 0],
+    ]);
+  });
+
+  it('should normalize non-square board RIGHT', () => {
+    testNormalizeBoard(rectangleTestBoard, Direction.RIGHT, [
+      [0, 2, 2, 0, 0],
+      [0, 0, 0, 0, 4],
+    ]);
   });
 });
 

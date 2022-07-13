@@ -9,9 +9,12 @@ export const normalizeBoard = (board: Board, direction: Direction): Board => {
   const numRows = board.length;
   const numCols = board[0].length;
 
-  const normalizedBoard: (Tile | null)[][] = [...Array(numRows)].map(() =>
-    Array(numCols).fill(null)
-  );
+  const swapRowsCols =
+    direction === Direction.UP || direction === Direction.DOWN;
+
+  const normalizedBoard: (Tile | null)[][] = [
+    ...Array(swapRowsCols ? numCols : numRows),
+  ].map(() => Array(swapRowsCols ? numRows : numCols).fill(null));
 
   const boardTileMapper: (tile: Tile, row: number, col: number) => void =
     direction === Direction.UP
