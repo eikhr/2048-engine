@@ -1,6 +1,6 @@
 import { fromNumberMatrix, toNumberMatrix } from '../utils/numberMatrix';
 import shiftAndMerge from './shiftAndMerge';
-import { Direction } from '../types';
+import { Direction, GameState } from '../types';
 
 describe('shiftAndMerge', () => {
   const board = fromNumberMatrix([
@@ -10,7 +10,11 @@ describe('shiftAndMerge', () => {
     [2, 0, 0, 0],
   ]);
 
-  const initialState = {
+  const initialState: GameState = {
+    status: {
+      hasPossibleMoves: true,
+      isWon: false,
+    },
     score: 4,
     board,
   };

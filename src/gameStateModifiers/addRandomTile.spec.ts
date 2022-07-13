@@ -11,12 +11,20 @@ describe('addRandomTile', () => {
   ]);
 
   const initialState: GameState = {
+    status: {
+      hasPossibleMoves: true,
+      isWon: false,
+    },
     score: 4,
     board,
   };
 
   it('throws an error if there is no space on the board', () => {
     const initialState = {
+      status: {
+        hasPossibleMoves: true,
+        isWon: false,
+      },
       score: 4,
       board: fromNumberMatrix([
         [2, 2, 2, 2],

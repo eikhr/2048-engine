@@ -5,6 +5,10 @@ import createRandomTile from './createRandomTile';
 
 describe('createRandomTile', () => {
   const gameState: GameState = {
+    status: {
+      hasPossibleMoves: true,
+      isWon: false,
+    },
     board: fromNumberMatrix([
       [2, 0],
       [0, 0],

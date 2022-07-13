@@ -15,6 +15,10 @@ export type TileRow = readonly (Tile | null)[];
 export type Board = readonly TileRow[];
 
 export interface GameState {
+  readonly status: {
+    readonly hasPossibleMoves: boolean;
+    readonly isWon: boolean;
+  };
   readonly board: Board;
   readonly score: number;
   // current random-seed (incremented for each rng-creation)

@@ -18,6 +18,10 @@ const createGame = (gameData: Partial<GameData> = {}): Game => {
   const initializeGameState = pipe(addRandomTile, addRandomTile);
 
   const gameState: GameState = initializeGameState({
+    status: {
+      hasPossibleMoves: true,
+      isWon: false,
+    },
     board: initialBoard,
     score: 0,
     rngNumber: randomSeed,

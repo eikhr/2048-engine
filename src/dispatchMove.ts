@@ -2,6 +2,10 @@ import { Game, GameState, Move, MoveType } from './types';
 import shiftAndMerge from './gameStateModifiers/shiftAndMerge';
 import addRandomTile from './gameStateModifiers/addRandomTile';
 import compareBoards from './utils/compareBoards';
+import pipe from './utils/pipe';
+import updatePossibleMoves from './gameStateModifiers/updatePossibleMoves';
+
+const updateStatus = pipe(updatePossibleMoves);
 
 // executes a move in the game, returns the new state and updates game.currentState
 const dispatchMove = (game: Game, move: Move): GameState => {
@@ -23,6 +27,8 @@ const dispatchMove = (game: Game, move: Move): GameState => {
       throw new Error('Bonus moves are not implemented yet');
     }
   }
+
+  newState = updateStatus(newState);
 
   game.moveLog.push(move);
   game.currentState = newState;
