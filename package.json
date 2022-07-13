@@ -1,6 +1,6 @@
 {
   "name": "2048-engine",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Game engine for 2048 game",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
