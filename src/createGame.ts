@@ -1,5 +1,4 @@
 import { Direction, Game, GameData, GameState, MoveType } from './types';
-import { fromNumberMatrix } from './utils/numberMatrix';
 import addRandomTile from './gameStateModifiers/addRandomTile';
 import pipe from './utils/pipe';
 import dispatchMove from './dispatchMove';
