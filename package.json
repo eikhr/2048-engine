@@ -32,5 +32,10 @@
     "singleQuote": true
   },
   "author": "Eik Hvattum Røgeberg",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eikhr/2048-engine.git"
+  },
+  "keywords": ["2048", "game", "logic", "engine", "typescript"]
 }
