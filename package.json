@@ -4,6 +4,7 @@
   "description": "Game engine for 2048 game",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": ["dist/**"],
   "scripts": {
     "prettier": "prettier --write 'src/**/*.ts'",
     "lint": "yarn lint:prettier && yarn lint:eslint",
