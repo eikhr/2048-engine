@@ -8,7 +8,7 @@
     "prettier": "prettier --write 'src/**/*.ts'",
     "lint": "yarn lint:prettier && yarn lint:eslint",
     "lint:prettier": "prettier --check 'src/**/*.ts'",
-    "lint:eslint": "eslint src/**/*.ts",
+    "lint:eslint": "eslint src/**",
     "test": "jest",
     "build": "tsc -p tsconfig.json"
   },

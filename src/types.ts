@@ -1,5 +1,3 @@
-import { RandomSeed } from 'random-seed';
-
 export enum Direction {
   UP,
   DOWN,
@@ -48,6 +46,10 @@ export interface BonusMove {
 export type Move = StandardMove | BonusMove;
 
 export interface GameData {
+  readonly boardMeta: {
+    readonly rows: number;
+    readonly cols: number;
+  };
   readonly randomSeed: number;
   readonly moveLog: Move[];
 }

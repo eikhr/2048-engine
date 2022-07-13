@@ -27,6 +27,13 @@ describe('createGame', () => {
     ]);
   });
 
+  it('can create a game with non-standard board size', () => {
+    const game = createGame({ boardMeta: { rows: 2, cols: 8 } });
+
+    expect(game.currentState.board.length).toEqual(2);
+    expect(game.currentState.board[0].length).toEqual(8);
+  });
+
   it('creating a game with supplied game data (incl. move log) results in correct state', () => {
     const game = createGame(testGameData);
 
@@ -51,6 +58,7 @@ export const testGameNumberMatrix = [
 ];
 
 const testGameData: GameData = {
+  boardMeta: { rows: 4, cols: 4 },
   randomSeed: 537805,
   moveLog: [
     {

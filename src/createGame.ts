@@ -5,19 +5,19 @@ import pipe from './utils/pipe';
 import dispatchMove from './dispatchMove';
 
 const createGame = (gameData: Partial<GameData> = {}): Game => {
-  const { randomSeed = Math.floor(Math.random() * 1000000) + 1, moveLog = [] } =
-    gameData;
+  const {
+    randomSeed = Math.floor(Math.random() * 1000000) + 1,
+    moveLog = [],
+    boardMeta = { rows: 4, cols: 4 },
+  } = gameData;
 
-  const initialBoard = fromNumberMatrix([
-    [0, 0, 0, 0],
-    [0, 0, 0, 0],
-    [0, 0, 0, 0],
-    [0, 0, 0, 0],
-  ]);
+  const initialBoard = Array(boardMeta.rows).fill(
+    Array(boardMeta.cols).fill(null)
+  );
 
   const initializeGameState = pipe(addRandomTile, addRandomTile);
 
-  let gameState: GameState = initializeGameState({
+  const gameState: GameState = initializeGameState({
     board: initialBoard,
     score: 0,
     rngNumber: randomSeed,
@@ -30,6 +30,7 @@ const createGame = (gameData: Partial<GameData> = {}): Game => {
 
   const game: Game = {
     currentState: gameState,
+    boardMeta,
     randomSeed,
     moveLog: [],
     move,
